@@ -27,11 +27,12 @@ case (ALUOp)
     3'b010: begin // ADD operation
         {Overflow, Result} = {A[31], A} + {B[31], B};
         Overflow = (A[31] == B[31]) && (Result[31] != A[31]);
-        GreaterThanZero = (A > 0);
+        
     end
     3'b110: begin // SUB operation
         {Overflow, Result} = {A[31], A} - {B[31], B};
         Overflow = (A[31] != B[31]) && (Result[31] != A[31]);
+        GreaterThanZero = (A > 0);
         
     end
     3'b111: begin less=A+1+(~B);	//ALU control line=111, set on less than
